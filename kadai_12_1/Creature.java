@@ -11,6 +11,4 @@ public abstract class Creature extends Actor {
 		System.out.println(cha.getName() + "は" + this.getAt() + "ポイントのダメージを受けた");
 		cha.setHp(cha.getHp() - this.getAt());
 	}
-
-
 }

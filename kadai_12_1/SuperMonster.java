@@ -11,14 +11,13 @@ public class SuperMonster extends Monster {
 		setPoison(poison);
 	}
 
-	
 	@Override
 	public void printStatus() {
 		super.printStatus();
 		System.out.println("毒攻撃力:" + this.getP_at());
 		System.out.println("毒針の数:" + this.getPoison());
 	}
-
+    // 毒攻撃
 	public void poison_Attack(Charactor cha) {
 		if(getPoison() <= 0) {
 			System.out.println(this.getName() + "は毒針を発射しようとした！");

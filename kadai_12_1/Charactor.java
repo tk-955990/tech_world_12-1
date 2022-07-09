@@ -6,7 +6,6 @@ public abstract class Charactor extends Actor {
 		super(name, hp, at, df);
 	}
 
-	
 	public void attack(Creature cre) {
 		System.out.println(getName() + "の攻撃！！");
 		cre.setHp(cre.getHp() - getAt());

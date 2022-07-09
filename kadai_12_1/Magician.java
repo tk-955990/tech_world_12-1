@@ -9,7 +9,6 @@ public class Magician extends Charactor {
 		super(name, hp, at, df);
 		setMp(mp);
 		setM_at(m_at);
-
 		System.out.println("魔法使いがここに誕生した");
 		System.out.println("名前:"   + getName());
 		printStatus();
@@ -21,8 +20,8 @@ public class Magician extends Charactor {
 		System.out.println("MP:" + this.mp);
 		System.out.println("攻撃魔法力:" + this.m_at);
 	}
-
-	public void magic_Attack(Creature cre) { // 魔法攻撃
+	// 魔法攻撃
+	public void magic_Attack(Creature cre) { 
 		System.out.println(getName() + "は魔法で攻撃した！");
 		if(getMp() < 10) {
 			System.out.println("しかし、MPが足りなかった・・・");
@@ -33,8 +32,8 @@ public class Magician extends Charactor {
 		setMp(this.mp - 10);
 		System.out.println("MPを１０ポイント消費し" + this.mp + "ポイントになった");
 	}
-
-	public void magic_Recovery(Charactor[] chas) { // 回復魔法
+	// 回復魔法
+	public void magic_Recovery(Charactor[] chas) { 
 		System.out.println(this.getName() + "は魔法で味方全員を回復した");
 		if(getMp() < 5) {
 			System.out.println("しかし、MPが足りなかった・・・");
@@ -47,8 +46,6 @@ public class Magician extends Charactor {
 		setMp(this.mp - 5);
 		System.out.println("MPを５ポイント消費し" + this.mp + "ポイントになった");
 	}
-
-
 
 	public int getMp() {
 		return this.mp;

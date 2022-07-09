@@ -17,6 +17,4 @@ public class SuperMagician extends Magician {
 		setMp(this.getMp() - 20);
 		System.out.println("MPを２０ポイント消費し" + this.getMp() + "ポイントになった");
 	}
-
-
 }
