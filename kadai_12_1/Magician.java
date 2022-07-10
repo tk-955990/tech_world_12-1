@@ -11,7 +11,7 @@ public class Magician extends Charactor {
 		setM_at(m_at);
 		System.out.println("魔法使いがここに誕生した");
 		System.out.println("名前:"   + getName());
-		printStatus();
+	//	printStatus();
 	}
 
 	@Override
@@ -40,8 +40,13 @@ public class Magician extends Charactor {
 			return;
 		}
 		for(int i = 0; i < chas.length; i++) {
-			chas[i].setHp(chas[i].getHp() + 10);
-			System.out.println(chas[i].getName() + "の体力が１０ポイント回復した");
+			if(chas[i].getHp() >0) {
+				chas[i].setHp(chas[i].getHp() + 10);
+				System.out.println(chas[i].getName() + "の体力が１０ポイント回復した");
+			}
+			else{
+				System.out.println(chas[i].getName()+"は死んでる");	
+			}
 		}
 		setMp(this.mp - 5);
 		System.out.println("MPを５ポイント消費し" + this.mp + "ポイントになった");

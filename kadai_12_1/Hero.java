@@ -7,6 +7,6 @@ public class Hero extends Charactor {
 
 		System.out.println("誇り高き勇者が今ここに誕生した");
 		System.out.println("名前:"   + getName());
-		printStatus();
+	//	printStatus();
 	}
 }

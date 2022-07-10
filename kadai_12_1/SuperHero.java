@@ -8,6 +8,7 @@ public class SuperHero extends Hero {
 	
 	@Override
 	public void attack(Creature cre) {
+		
 		System.out.println(getName() + "は２回連続で切り付けた！");
 		super.attack(cre);
 		super.attack(cre);

@@ -8,10 +8,13 @@ public class Story_10_3 {
 
 		// 勇者の生成
 		SuperHero      h = new SuperHero    ("roto", 500, 50, 80);
+		h.printStatus();
 		// 怪物の生成
 		SuperMonster   m = new SuperMonster ("kaiju", 1000, 100, 120, 50, 5);
+		m.printStatus();
 		// 魔法使いの生成
 		SuperMagician mg = new SuperMagician("medeia", 500, 30, 100, 50, 100);
+		mg.printStatus();
 		System.out.println("========= Game Start !! ================");
 
 		battle(h, mg, m);
@@ -33,7 +36,7 @@ public class Story_10_3 {
 			} else {
 				System.out.println("<<   　勇者の作戦は？   >>");
 				System.out.println("攻撃:1 防御:2 休憩:3 終了:4");
-				
+
 				String commandLine;
 				int get_hCommand;
 
@@ -82,7 +85,7 @@ public class Story_10_3 {
 				System.out.println("<<   魔法使いの作戦は？   >>");
 				System.out.println("攻撃:1 攻撃魔法:2 超攻撃魔法:3");
 				System.out.println("回復魔法:4 防御:5 休憩:6 終了:7");
-				
+
 				String commandLine;
 				int get_mgCommand;
 
@@ -94,7 +97,7 @@ public class Story_10_3 {
 				}catch(NumberFormatException e){
 					get_mgCommand = 0;
 				}
-				
+
 				switch (get_mgCommand) {
 				case 1:
 					chas[1].attack(cres[0]);
@@ -143,6 +146,7 @@ public class Story_10_3 {
 					break;
 				case 2:
 				case 3:
+					cres[0].attack(chas[random % 2]);
 					((SuperMonster) cres[0]).poison_Attack(chas[random % 2]);
 					deadCheck(chas[random % 2]);
 					break;
@@ -151,7 +155,7 @@ public class Story_10_3 {
 					break;
 				}
 			}
-			
+
 			// 魔法使いが死んでいる時
 			else if( (chas[1].getHp()<= 0) && (chas[0].getHp() > 0) ) {
 				int random = (int) (Math.random() * 3);
@@ -160,17 +164,18 @@ public class Story_10_3 {
 					cres[0].attack(chas[0]);
 					break;
 				case 1:
+					cres[0].attack(chas[0]);
 					((SuperMonster) cres[0]).poison_Attack(chas[0]);
 					break;
 				case 2:
 					cres[0].defence();
 					break;
 				}
-				printStatus(chas, cres);
+	//			printStatus(chas, cres);
 				if(endCheck(chas, cres)) {
 					break;
 				}
-			// 勇者が死んでいる時
+				// 勇者が死んでいる時
 			}
 			else if ( (((Magician) chas[1]).getHp() > 0) && (((Hero) chas[0]).getHp() <= 0)) {
 				int random = (int) (Math.random() * 3);
@@ -179,6 +184,7 @@ public class Story_10_3 {
 					cres[0].attack(chas[1]);
 					break;
 				case 1:
+					cres[0].attack(chas[1]);
 					((SuperMonster) cres[0]).poison_Attack(chas[1]);
 					break;
 				case 2:
@@ -186,10 +192,10 @@ public class Story_10_3 {
 					break;
 				}
 			}
-			
+
 			printStatus(chas, cres);
 			if(endCheck(chas, cres)) {
-				continue;
+				break;
 			}
 			System.out.println("モンスターのターン終了");
 			System.out.println("----------------------------------------");
@@ -197,6 +203,7 @@ public class Story_10_3 {
 	}
 
 	public static void printStatus(Charactor chas[], Creature cres[]) {
+		System.out.println("");
 		for(int i = 0; i < chas.length; i++) {
 			System.out.println("【"      + chas[i].getName() + ":ステータス】");
 			chas[i].printStatus();
@@ -227,6 +234,7 @@ public class Story_10_3 {
 			}
 		}
 		if(checkFlg) {
+			printStatus(chas, cres);
 			System.out.println("@@@@@@@@@@@  " + chas[0].getName() + "  達は全滅した・・・  @@@@@@@@@@");
 			return checkFlg;
 		}
